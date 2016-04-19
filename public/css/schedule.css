@@ -1,0 +1,54 @@
+html,body{height:100%;}
+.navbar{
+	margin-bottom: 0px !important;
+}
+div.frame_container{
+	float:left;
+}
+div.frame_container_no_scroll{
+	overflow-y: hidden;
+	overflow-x: hidden;
+}
+#left_top{
+	border-style: hidden solid solid solid;
+	border-width: 1px;
+	border-color:lightgrey;
+}
+div.date_header{
+	float:left;
+	width:100px;
+	height:40px;
+	border-style: hidden solid solid hidden;
+	border-width: 1px;
+	border-color:lightgrey;
+}
+div.user_list{
+	width:200px;
+	height:100px;
+	border-style: hidden solid solid solid;
+	border-width: 1px;
+	border-color:lightgrey;
+}
+div.schedule_box{
+	float:left;
+	width:100px;
+	height:100px;
+	border-style: hidden solid solid hidden;
+	border-width: 1px;
+	border-color:lightgrey;
+	overflow-y: visible;
+}
+div.schedule_box_over{
+	background-color: 	#f8f8f8;
+}
+div.schedule{
+	//margin-bottom: 1px;
+	//margin-left: 1px;
+	position: relative;
+	border-radius: 5px;
+	border-style: solid;
+	border-color: grey;
+	border-width: 0px 2px 0px 2px;
+	box-sizing: content-box;
+	cursor: move;
+}
