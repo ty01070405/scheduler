@@ -1,4 +1,6 @@
-html,body{height:100%;}
+html,body{
+	height:100%;
+}
 .navbar{
 	margin-bottom: 0px !important;
 }
@@ -29,6 +31,9 @@ div.user_list{
 	border-width: 1px;
 	border-color:lightgrey;
 }
+div.schedule_row{
+	position: relative;
+}
 div.schedule_box{
 	float:left;
 	width:100px;
@@ -40,11 +45,10 @@ div.schedule_box{
 }
 div.schedule_box_over{
 	background-color: 	#f8f8f8;
+	z-index: -1;
 }
 div.schedule{
-	//margin-bottom: 1px;
-	//margin-left: 1px;
-	position: relative;
+	position: absolute;
 	border-radius: 5px;
 	border-style: solid;
 	border-color: grey;

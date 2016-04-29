@@ -22,7 +22,7 @@ class ScheduleRepository {
 		foreach ($users as $user) {
 			$temp_array = array();
 			$temp_array['user'] = array(
-				'id' => $user->id,
+				'id' => 'u'.$user->id,
 				'name' => $user->name,
 			);
 			$temp_array['schedule'] = array();
@@ -34,7 +34,10 @@ class ScheduleRepository {
 				->orderBy('start_date', 'asc')
 				->get();
 			foreach($schedules as $schedule){
-				array_push($temp_array['schedule'], array(
+				if(!isset($temp_array['schedule'][$schedule->start_date])){
+					$temp_array['schedule'][$schedule->start_date] = array();
+				}
+				$temp_array['schedule'][$schedule->start_date][$schedule->id] = array(
 					'id' => $schedule->id,
 					'project_id' => $schedule->project_id,
 					'task_id' => $schedule->task_id,
@@ -45,9 +48,9 @@ class ScheduleRepository {
 					'num_non_working_days' => $schedule->num_non_working_days,
 					'daily_hours' => $schedule->daily_hours,
 					'total_hours' => $schedule->total_hours,
-				));
+				);
 			}
-			array_push($return, $temp_array);
+			$return['u'.$user->id] = $temp_array;
 		}
 		return $return;
 	}
