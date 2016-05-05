@@ -14,7 +14,7 @@ class ScheduleRepository {
 	 * @param  Organisation $organisation
 	 * @return Collection
 	 */
-	public function getScheduleData($filter=null) {
+	public function getScheduleList($filter=null) {
 		$return = array();
 		$users = User::where('organisation_id', Auth::user()->organisation_id)
 			->orderBy('name', 'asc')

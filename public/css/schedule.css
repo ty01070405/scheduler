@@ -31,6 +31,11 @@ div.user_list{
 	border-width: 1px;
 	border-color:lightgrey;
 }
+div.user_list_bottom{
+	width:200px;
+	height:50px;
+	border-style: hidden hidden hidden hidden;
+}
 div.schedule_row{
 	position: relative;
 }

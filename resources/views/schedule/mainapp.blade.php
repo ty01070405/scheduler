@@ -13,31 +13,30 @@
 	</div>
 	<div id="left_bottom" class="frame_container frame_container_no_scroll"></div>
 	<div id="right_bottom" class="frame_container" style="overflow: auto;">
-		<?php
-		/*
-		for ($j = 1; $j <= 20; $j++) {
-			?>
-			<div style="width:2000px;height:100px;">
-				<?php
-				for ($i = 1; $i <= 20; $i++) {
-					?>
-					<div class="schedule_box" >
-						<?php
-						if ($i == 2 && ($j == 3 || $j == 5)) {
-							?>
-							<div class="dragme" style="width:290px;height:30px;background-color: steelblue;"></div>
-							<?php
-						}
-						?>
-					</div>
-					<?php
-				}
-				?>
-			</div>
-			<?php
-		}
-		*/
-		?>
+		<div id="right_bottom_inner_wrap"></div>
 	</div>
 </div>
+<div class="modal" id="schedule_form" tabindex="-1" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">{{ trans('menu.schedule') }}</h4>
+			</div>
+			<div class="modal-body">
+				{{ csrf_field() }}
+				<input type="hidden" id="schedule_id" />
+				<input type="hidden" id="action" />
+				<div class="form-group">
+					<label for="department_name">{{trans('menu.name')}}</label>
+					<input type="text" class="form-control" id="department_name" />
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary" onclick='sendForm();'>Save changes</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 @endsection

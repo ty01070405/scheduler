@@ -25,7 +25,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::group(['middleware' => ['web']], function () {	
+Route::group(['middleware' => ['web']], function () {
+	Route::auth();
+	
 	Route::get('/', function () {
 		if(Auth::check()){
 			return view('schedule/mainapp');
@@ -52,10 +54,10 @@ Route::group(['middleware' => ['web']], function () {
 		return view('admin/index');
 	}]);
 	
-	Route::post('/api/department', ['middleware' => 'auth', 'uses' => 'DepartmentController@processEditForm']);
 	Route::get('/api/department', ['middleware' => 'auth', 'uses' => 'DepartmentController@getDepartment']);
+	Route::post('/api/department', ['middleware' => 'auth', 'uses' => 'DepartmentController@processEditForm']);
 	
+	Route::get('/api/scheduleList', ['middleware' => 'auth', 'uses' => 'ScheduleController@getScheduleList']);
 	Route::get('/api/schedule', ['middleware' => 'auth', 'uses' => 'ScheduleController@getSchedule']);
-	
-	Route::auth();
+	Route::post('/api/schedule', ['middleware' => 'auth', 'uses' => 'ScheduleController@processEditForm']);
 });

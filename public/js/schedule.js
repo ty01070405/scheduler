@@ -8,6 +8,7 @@ $(document).ready(function () {
 		resizeWindow();
 	})
 	initialSchedule();
+	
 });
 
 var default_schedule_width = 100;
@@ -20,16 +21,20 @@ var schedule_from_date = null;
 
 function registerScheduleDragAndDrop() {
 	$(".schedule").draggable({
+		containment: '#right_bottom_inner_wrap',
 		scroll: true,
 		stack: ".schedule",
 		zIndex: 100,
 		cursorAt: {left: 10}
 	});
 	$(".schedule").resizable({
-		handles: 'e',
+		handles: 'w, e',
+		containment: '#right_bottom_inner_wrap',
+		scroll: true,
 		grid: [100, 0],
 		distance: 5,
 		stop: function (event, ui) {
+			//alert($(ui.element).data("ui-resizable").axis);
 			this_num_days = Math.ceil($(ui.element).width() / default_schedule_width);
 			$(ui.element).attr('data-sch-num-days', this_num_days);
 			drawSchedule();
@@ -56,6 +61,12 @@ function registerScheduleDragAndDrop() {
 			}
 			drawSchedule();
 		}
+	});
+	$('.schedule_box').click(function(){
+		openScheduleForm();
+	});
+	$('.schedule').click(function(){
+		openScheduleForm();
 	});
 }
 
@@ -84,7 +95,7 @@ function initialSchedule() {
 		date_list.push(from_date);
 	}
 	$.ajax({
-		url: 'api/schedule',
+		url: 'api/scheduleList',
 		type: "get",
 		data: {},
 		success: function (data) {
@@ -96,6 +107,7 @@ function initialSchedule() {
 function loadSchedule(date_list, schedule_data) {
 	//Calculate width of right boxes
 	$('#right_top_inner_wrap').css('width', date_list.length * default_schedule_width + 100);
+	$('#right_bottom_inner_wrap').css('width', date_list.length * default_schedule_width);
 	schedules = {};
 	date_list.forEach(function (item, index) {
 		if (!schedule_from_date) {
@@ -111,7 +123,7 @@ function loadSchedule(date_list, schedule_data) {
 	});
 	$.each(schedule_data, function (index, item) {
 		$('#left_bottom').append("<div id='user_list_" + item.user.id + "' class='user_list'>" + item.user.name + "</div>");
-		$('#right_bottom').append("<div id='user_schedule_row_" + item.user.id + "' style='width:" + (date_list.length * default_schedule_width) + "px;height:" + default_schedule_height + "px' class='schedule_row'></div>");
+		$('#right_bottom_inner_wrap').append("<div id='user_schedule_row_" + item.user.id + "' style='width:" + (date_list.length * default_schedule_width) + "px;height:" + default_schedule_height + "px' class='schedule_row'></div>");
 		date_list.forEach(function (date_item, date_index) {
 			standard_date_format = getStandardFormatDate(date_item);
 			$('#user_schedule_row_' + item.user.id).append("<div data-sch-user-id='" + item.user.id + "' data-sch-date='" + standard_date_format + "' class='schedule_box schedule_row_" + item.user.id + "'></div>");
@@ -121,8 +133,8 @@ function loadSchedule(date_list, schedule_data) {
 				schedules[index][date] = value;
 			});
 		}
-
 	});
+	$('#left_bottom').append("<div class='user_list_bottom'></div>");
 	$.each(schedules, function (user_id, schedule_data) {
 		if (schedule_data) {
 			$.each(schedule_data, function (schedule_date, schedule_day_items) {
@@ -132,7 +144,7 @@ function loadSchedule(date_list, schedule_data) {
 						temp_num_days = schedule_item.num_working_days + schedule_item.num_non_working_days;
 						temp_height = temp_num_grid * grid_height - 2;
 						temp_width = temp_num_days * default_schedule_width - 6;
-						$temp_schedule_div = $("<div class='schedule' style='width:" + temp_width + "px;height:" + temp_height + "px;background-color: lightgrey;'></div>");
+						$temp_schedule_div = $("<div class='schedule' style='width:" + temp_width + "px;height:" + temp_height + "px;background-color: " + '#' + ("000000" + Math.random().toString(16).slice(2, 8).toUpperCase()).slice(-6) + ";'></div>");
 						$temp_schedule_div.attr('data-sch-num-grids', temp_num_grid);
 						$temp_schedule_div.attr('data-sch-num-days', temp_num_days);
 						$temp_schedule_div.attr('data-sch-date-from', schedule_date);
@@ -243,4 +255,8 @@ function setGridTaken(start_grid, num_of_grids, num_of_days, user_id, date) {
 		});
 		temp_date = new Date(temp_date.getTime() + 86400000);
 	}
+}
+
+function openScheduleForm(){
+	$("#schedule_form").modal("show");
 }
