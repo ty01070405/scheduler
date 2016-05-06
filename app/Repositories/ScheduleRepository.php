@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\User;
 use App\Schedule;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ScheduleRepository {
 
@@ -26,13 +27,20 @@ class ScheduleRepository {
 				'name' => $user->name,
 			);
 			$temp_array['schedule'] = array();
-			$schedules = Schedule::where([
+			$schedules = DB::table('schedules')
+				->join('tasks', 'schedules.task_id', '=', 'tasks.id')
+				->select('schedules.*', 'tasks.name')
+				->where([
 					['user_id', $user->id],
 					['start_date', '>=', '2016-04-01'],
 					['start_date', '<=', '2016-04-30'],
 				])
 				->orderBy('start_date', 'asc')
 				->get();
+				
+				
+				
+
 			foreach($schedules as $schedule){
 				if(!isset($temp_array['schedule'][$schedule->start_date])){
 					$temp_array['schedule'][$schedule->start_date] = array();
@@ -41,6 +49,7 @@ class ScheduleRepository {
 					'id' => $schedule->id,
 					'project_id' => $schedule->project_id,
 					'task_id' => $schedule->task_id,
+					'task_name' => $schedule->name,
 					'user_id' => $schedule->user_id,
 					'start_date' => $schedule->start_date,
 					'end_date' => $schedule->end_date,

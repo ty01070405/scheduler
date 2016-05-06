@@ -28,13 +28,41 @@
 				<input type="hidden" id="schedule_id" />
 				<input type="hidden" id="action" />
 				<div class="form-group">
-					<label for="department_name">{{trans('menu.name')}}</label>
-					<input type="text" class="form-control" id="department_name" />
+					<label for="client_id">{{trans('menu.client')}}</label>
+					<input type="text" class="form-control" id="client_id" />
+				</div>
+				<div class="form-group">
+					<label for="project_id">{{trans('menu.project')}}</label>
+					<input type="text" class="form-control" id="project_id" />
+				</div>
+				<div class="form-group">
+					<label for="task_id">{{trans('menu.task')}}</label>
+					<input type="text" class="form-control" id="task_id" />
+				</div>
+				<div class="form-group">
+					<label for="user_id">{{trans('menu.user')}}</label>
+					<input type="text" class="form-control" id="user_id" />
+				</div>
+				<div class="form-group">
+					<label for="start_date">{{trans('menu.start_date')}}</label>
+					<input type="text" class="form-control" id="start_date" />
+				</div>
+				<div class="form-group">
+					<label for="end_date">{{trans('menu.end_date')}}</label>
+					<input type="text" class="form-control" id="end_date" />
+				</div>
+				<div class="form-group">
+					<label for="daily_hours">{{trans('menu.daily_hours')}}</label>
+					<input type="text" class="form-control" id="daily_hours" />
+				</div>
+				<div class="form-group">
+					<label for="total_hours">{{trans('menu.total_hours')}}</label>
+					<input type="text" class="form-control" id="total_hours" />
 				</div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary" onclick='sendForm();'>Save changes</button>
+				<button type="button" class="btn btn-primary" onclick='sendScheduleForm();'>Save changes</button>
 			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->

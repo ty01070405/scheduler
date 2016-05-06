@@ -23,6 +23,7 @@ return [
 	'add' => '新建',
 	'edit' => '修改',
 	'name' => '名称',
+	'task' => '任务',
 	
 	/**
 	 * Department

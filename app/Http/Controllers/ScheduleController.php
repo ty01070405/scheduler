@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Department;
-use App\Organisation;
+use App\Schedule;
 use App\Repositories\ScheduleRepository;
 use Illuminate\Support\Facades\Auth;
 
@@ -51,6 +51,12 @@ class ScheduleController extends Controller {
 						'task_id' => $request->input('task_id'),
 						'user_id' => $request->input('user_id'),
 						'start_date' => $request->input('start_date'),
+						'end_date' => $request->input('end_date'),
+						'num_working_days' => 2,
+						'num_non_working_days' => 0,
+						'daily_hours' => $request->input('daily_hours'),
+						'total_hours' => $request->input('total_hours'),
+						'created_by' => Auth::user()->id,
 					]);
 					break;
 				case 'update':

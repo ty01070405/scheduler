@@ -23,6 +23,17 @@ return [
 	'add' => 'Add',
 	'edit' => 'Edit',
 	'name' => 'Name',
+	'task' => 'Task',
+	'user' => 'User',
+	
+	/**
+	 * Schedule
+	 */
+	'start_date' => 'Start Date',
+	'end_date' => 'End Date',
+	'daily_hours' => 'Daily Hours',
+	'total_hours' => 'Total Hours',
+	
 	
 	/**
 	 * Department

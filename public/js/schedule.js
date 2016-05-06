@@ -8,7 +8,7 @@ $(document).ready(function () {
 		resizeWindow();
 	})
 	initialSchedule();
-	
+
 });
 
 var default_schedule_width = 100;
@@ -62,10 +62,10 @@ function registerScheduleDragAndDrop() {
 			drawSchedule();
 		}
 	});
-	$('.schedule_box').click(function(){
+	$('.schedule_box').click(function () {
 		openScheduleForm();
 	});
-	$('.schedule').click(function(){
+	$('.schedule').click(function () {
 		openScheduleForm();
 	});
 }
@@ -144,7 +144,7 @@ function loadSchedule(date_list, schedule_data) {
 						temp_num_days = schedule_item.num_working_days + schedule_item.num_non_working_days;
 						temp_height = temp_num_grid * grid_height - 2;
 						temp_width = temp_num_days * default_schedule_width - 6;
-						$temp_schedule_div = $("<div class='schedule' style='width:" + temp_width + "px;height:" + temp_height + "px;background-color: " + '#' + ("000000" + Math.random().toString(16).slice(2, 8).toUpperCase()).slice(-6) + ";'></div>");
+						$temp_schedule_div = $("<div class='schedule' style='width:" + temp_width + "px;height:" + temp_height + "px;background-color: " + '#' + ("000000" + Math.random().toString(16).slice(2, 8).toUpperCase()).slice(-6) + ";'>"+schedule_item.task_name+"</div>");
 						$temp_schedule_div.attr('data-sch-num-grids', temp_num_grid);
 						$temp_schedule_div.attr('data-sch-num-days', temp_num_days);
 						$temp_schedule_div.attr('data-sch-date-from', schedule_date);
@@ -257,6 +257,30 @@ function setGridTaken(start_grid, num_of_grids, num_of_days, user_id, date) {
 	}
 }
 
-function openScheduleForm(){
+function openScheduleForm() {
 	$("#schedule_form").modal("show");
+	$('#action').val('create');
+}
+
+function sendScheduleForm() {
+	$.ajax({
+		url: 'api/schedule',
+		type: "post",
+		data: {
+			'id': $('#schedule_id').val(),
+			'client_id': $('#client_id').val(),
+			'project_id': $('#project_id').val(),
+			'task_id': $('#task_id').val(),
+			'user_id': $('#user_id').val(),
+			'start_date': $('#start_date').val(),
+			'end_date': $('#end_date').val(),
+			'daily_hours': $('#daily_hours').val(),
+			'total_hours': $('#total_hours').val(),
+			'action': $('#action').val(),
+			'_token': $('input[name=_token]').val()
+		},
+		success: function (data) {
+			location.reload();
+		}
+	})
 }
