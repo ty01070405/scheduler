@@ -27,13 +27,36 @@ return [
 	'user' => 'User',
 	
 	/**
+	 * Date related
+	 */
+	'mon' => 'Mon',
+	'tue' => 'Tue',
+	'wed' => 'Wed',
+	'thu' => 'Thu',
+	'fri' => 'Fri',
+	'sat' => 'Sat',
+	'sun' => 'Sun',
+	
+	'jan' => 'Jan',
+	'feb' => 'Feb',
+	'mar' => 'Mar',
+	'apr' => 'Apr',
+	'may' => 'May',
+	'jun' => 'Jun',
+	'jul' => 'Jul',
+	'aug' => 'Aug',
+	'sep' => 'Sep',
+	'oct' => 'Oct',
+	'nov' => 'Nov',
+	'dec' => 'Dec',
+	
+	/**
 	 * Schedule
 	 */
 	'start_date' => 'Start Date',
 	'end_date' => 'End Date',
 	'daily_hours' => 'Daily Hours',
 	'total_hours' => 'Total Hours',
-	
 	
 	/**
 	 * Department

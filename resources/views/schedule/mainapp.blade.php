@@ -7,7 +7,11 @@
 	<input type="text" class="form-control" placeholder="Filter..." />
 </div>
 <div id="main_div" style="width:100%; overflow-y: hidden; overflow-x: hidden;">
-	<div id="left_top" class="frame_container frame_container_no_scroll"></div>
+	<div id="left_top" class="frame_container frame_container_no_scroll" style="padding: 8px;">
+			<i class="fa fa-reorder fa-lg" ></i>
+			<i class="fa fa-download fa-lg" style="margin-left:15px;" ></i>
+			<i class="fa fa-bell-o fa-lg" style="margin-left:15px;" ></i>
+	</div>
 	<div id="right_top" class="frame_container frame_container_no_scroll">
 		<div id="right_top_inner_wrap" style="height:40px;"></div>
 	</div>

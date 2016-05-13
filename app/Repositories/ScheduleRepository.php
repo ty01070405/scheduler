@@ -25,11 +25,14 @@ class ScheduleRepository {
 			$temp_array['user'] = array(
 				'id' => 'u'.$user->id,
 				'name' => $user->name,
+				'job_title' => $user->job_title,
+				'avatar' => $user->avatar,
 			);
 			$temp_array['schedule'] = array();
 			$schedules = DB::table('schedules')
 				->join('tasks', 'schedules.task_id', '=', 'tasks.id')
-				->select('schedules.*', 'tasks.name')
+				->join('projects', 'schedules.project_id', '=', 'projects.id')
+				->select('schedules.*', 'tasks.name', 'projects.color')
 				->where([
 					['user_id', $user->id],
 					['start_date', '>=', '2016-04-01'],
@@ -48,6 +51,7 @@ class ScheduleRepository {
 				$temp_array['schedule'][$schedule->start_date][$schedule->id] = array(
 					'id' => $schedule->id,
 					'project_id' => $schedule->project_id,
+					'color' => $schedule->color,
 					'task_id' => $schedule->task_id,
 					'task_name' => $schedule->name,
 					'user_id' => $schedule->user_id,

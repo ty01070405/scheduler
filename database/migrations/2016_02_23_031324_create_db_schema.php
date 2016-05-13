@@ -35,6 +35,8 @@ class CreateDbSchema extends Migration
 		Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+			$table->string('job_title');
+			$table->string('avatar');
             $table->string('email')->unique();
             $table->string('password', 60);
             $table->rememberToken();
@@ -71,6 +73,7 @@ class CreateDbSchema extends Migration
 			$table->unsignedInteger('leader')->default(0)->index();
 			$table->unsignedInteger('time_estimate')->default(0);
 			$table->unsignedInteger('client_id')->default(0)->index();
+			$table->string('color')->index();
             $table->unsignedInteger('created_by')->default(0)->index();
             $table->unsignedInteger('updated_by')->default(0)->index();
             $table->timestamps();

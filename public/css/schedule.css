@@ -1,5 +1,6 @@
 html,body{
 	height:100%;
+	background-color: #fcfdff;
 }
 .navbar{
 	margin-bottom: 0px !important;
@@ -15,6 +16,7 @@ div.frame_container_no_scroll{
 	border-style: hidden solid solid solid;
 	border-width: 1px;
 	border-color:lightgrey;
+	background-color: #f8f8f8;
 }
 div.date_header{
 	float:left;
@@ -23,6 +25,9 @@ div.date_header{
 	border-style: hidden solid solid hidden;
 	border-width: 1px;
 	border-color:lightgrey;
+	text-align: center;
+	vertical-align: middle;
+	background-color: #f8f8f8;
 }
 div.user_list{
 	width:200px;
@@ -30,6 +35,8 @@ div.user_list{
 	border-style: hidden solid solid solid;
 	border-width: 1px;
 	border-color:lightgrey;
+	background-color: #f8f8f8;
+	padding: 10px;
 }
 div.user_list_bottom{
 	width:200px;
@@ -46,6 +53,7 @@ div.schedule_box{
 	border-style: hidden solid solid hidden;
 	border-width: 1px;
 	border-color:lightgrey;
+	background-color: 	white;
 	overflow-y: visible;
 }
 div.schedule_box_over{
@@ -54,7 +62,7 @@ div.schedule_box_over{
 }
 div.schedule{
 	position: absolute;
-	border-radius: 5px;
+	border-radius: 3px;
 	border-style: solid;
 	border-color: grey;
 	border-width: 0px 2px 0px 2px;

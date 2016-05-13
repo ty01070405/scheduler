@@ -12,6 +12,11 @@
     <script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery-ui.min.js"></script>
 	<script src="js/common.js"></script>
+	<script>
+		var days = ['{{ trans('menu.sun') }}','{{ trans('menu.mon') }}','{{ trans('menu.tue') }}','{{ trans('menu.wed') }}','{{ trans('menu.thu') }}','{{ trans('menu.fri') }}','{{ trans('menu.sat') }}'];
+		var months = ['{{ trans('menu.jan') }}', '{{ trans('menu.feb') }}', '{{ trans('menu.mar') }}', '{{ trans('menu.apr') }}', '{{ trans('menu.may') }}', '{{ trans('menu.jun') }}', '{{ trans('menu.jul') }}', 
+			'{{ trans('menu.aug') }}', '{{ trans('menu.sep') }}', '{{ trans('menu.oct') }}', '{{ trans('menu.nov') }}', '{{ trans('menu.dec') }}'];
+	</script>
 	
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 
@@ -35,7 +40,7 @@
 </head>
 <body id="app-layout">
     <nav class="navbar navbar-default">
-        <div class="container">
+        <div class="container" style="width:100%;">
             <div class="navbar-header">
                 <!-- Collapsed Hamburger -->
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
@@ -47,15 +52,15 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                   <!-- <img height="25px" src="images/sample_logo.png"> -->
+                   <img height="25px" src="images/sample_logo.png">
                 </a>
             </div>
 
-            <div class="collapse navbar-collapse" id="app-navbar-collapse">
+            <div class="collapse navbar-collapse" id="app-navbar-collapse" >
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
 					@if(Auth::check())
-						<li><a href="{{ url('/') }}">{{ trans('menu.schedule') }}</a></li>
+						<li class="active"><a href="{{ url('/') }}">{{ trans('menu.schedule') }}</a></li>
 						<li><a href="{{ url('/project') }}">{{ trans('menu.project') }}</a></li>
 						<li><a href="{{ url('/client') }}">{{ trans('menu.client') }}</a></li>
 						<li><a href="{{ url('/department') }}">{{ trans('menu.department') }}</a></li>

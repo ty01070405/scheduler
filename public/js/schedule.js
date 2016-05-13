@@ -113,7 +113,7 @@ function loadSchedule(date_list, schedule_data) {
 		if (!schedule_from_date) {
 			schedule_from_date = item;
 		}
-		$('#right_top_inner_wrap').append("<div class='date_header'>" + getStandardFormatDate(item) + "</div>");
+		$('#right_top_inner_wrap').append("<div class='date_header'>" + getReadableFormatDate(item) + "<br>" + days[item.getDay()] + "</div>");
 	});
 	$.each(schedule_data, function (index, item) {
 		schedules[index] = {};
@@ -122,7 +122,7 @@ function loadSchedule(date_list, schedule_data) {
 		});
 	});
 	$.each(schedule_data, function (index, item) {
-		$('#left_bottom').append("<div id='user_list_" + item.user.id + "' class='user_list'>" + item.user.name + "</div>");
+		$('#left_bottom').append(buildUserListBox(item.user));
 		$('#right_bottom_inner_wrap').append("<div id='user_schedule_row_" + item.user.id + "' style='width:" + (date_list.length * default_schedule_width) + "px;height:" + default_schedule_height + "px' class='schedule_row'></div>");
 		date_list.forEach(function (date_item, date_index) {
 			standard_date_format = getStandardFormatDate(date_item);
@@ -144,7 +144,7 @@ function loadSchedule(date_list, schedule_data) {
 						temp_num_days = schedule_item.num_working_days + schedule_item.num_non_working_days;
 						temp_height = temp_num_grid * grid_height - 2;
 						temp_width = temp_num_days * default_schedule_width - 6;
-						$temp_schedule_div = $("<div class='schedule' style='width:" + temp_width + "px;height:" + temp_height + "px;background-color: " + '#' + ("000000" + Math.random().toString(16).slice(2, 8).toUpperCase()).slice(-6) + ";'>"+schedule_item.task_name+"</div>");
+						$temp_schedule_div = $("<div class='schedule' style='width:" + temp_width + "px;height:" + temp_height + "px;background-color: " + schedule_item.color + ";'>" + schedule_item.task_name + "</div>");
 						$temp_schedule_div.attr('data-sch-num-grids', temp_num_grid);
 						$temp_schedule_div.attr('data-sch-num-days', temp_num_days);
 						$temp_schedule_div.attr('data-sch-date-from', schedule_date);
@@ -283,4 +283,12 @@ function sendScheduleForm() {
 			location.reload();
 		}
 	})
+}
+
+function buildUserListBox(user) {
+	return "<div id='user_list_" + user.id + "' class='user_list'>"
+			+ "<span style='font-size:large;'>" + user.name + "</span>"
+			+ "<img width='50px' height='50px;' class='img-rounded' style='float:right;' src='" + user.avatar + "'>"
+			+ "<br><span style='color:grey'>" + user.job_title + "</span>"
+			+ "</div>";
 }
