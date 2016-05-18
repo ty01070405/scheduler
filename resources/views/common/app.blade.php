@@ -11,11 +11,21 @@
     <script src="js/jquery-2.2.3.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery-ui.min.js"></script>
+	<script src="js/spin.min.js"></script>
 	<script src="js/common.js"></script>
 	<script>
 		var days = ['{{ trans('menu.sun') }}','{{ trans('menu.mon') }}','{{ trans('menu.tue') }}','{{ trans('menu.wed') }}','{{ trans('menu.thu') }}','{{ trans('menu.fri') }}','{{ trans('menu.sat') }}'];
 		var months = ['{{ trans('menu.jan') }}', '{{ trans('menu.feb') }}', '{{ trans('menu.mar') }}', '{{ trans('menu.apr') }}', '{{ trans('menu.may') }}', '{{ trans('menu.jun') }}', '{{ trans('menu.jul') }}', 
 			'{{ trans('menu.aug') }}', '{{ trans('menu.sep') }}', '{{ trans('menu.oct') }}', '{{ trans('menu.nov') }}', '{{ trans('menu.dec') }}'];
+		
+		$(document).ready(function() {
+			if(this.location.href.slice(-1)=='/'){
+				this_url = this.location.href.slice(0, -1);
+			}else{
+				this_url = this.location.href;
+			}
+			$('a[href="' + this_url + '"]').parent().addClass('active');
+		});
 	</script>
 	
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
@@ -60,7 +70,8 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
 					@if(Auth::check())
-						<li class="active"><a href="{{ url('/') }}">{{ trans('menu.schedule') }}</a></li>
+						<li><a href="{{ url('/') }}">{{ trans('menu.team_schedule') }}</a></li>
+						<li><a href="{{ url('/my_schedule') }}">{{ trans('menu.my_schedule') }}</a></li>
 						<li><a href="{{ url('/project') }}">{{ trans('menu.project') }}</a></li>
 						<li><a href="{{ url('/client') }}">{{ trans('menu.client') }}</a></li>
 						<li><a href="{{ url('/department') }}">{{ trans('menu.department') }}</a></li>

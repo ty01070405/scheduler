@@ -30,11 +30,15 @@ Route::group(['middleware' => ['web']], function () {
 	
 	Route::get('/', function () {
 		if(Auth::check()){
-			return view('schedule/mainapp');
+			return view('team_schedule/index');
 		}else{
 			return view('welcome');
 		}
 	});
+	
+	Route::get('/my_schedule', ['middleware' => 'auth', function () {
+		return view('my_schedule/index');
+	}]);
 
 	Route::get('/project', ['middleware' => 'auth', function () {
 		return view('project/index');

@@ -12,6 +12,8 @@ return [
     */
 
     'schedule' => '日程',
+	'my_schedule' => '我的日程',
+	'team_schedule' => '团队日程',
     'project' => '项目',
 	'client' => '客户',
 	'department' => '部门',

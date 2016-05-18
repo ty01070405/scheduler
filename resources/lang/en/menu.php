@@ -12,6 +12,8 @@ return [
     */
 
     'schedule' => 'Schedule',
+	'my_schedule' => 'My Schedule',
+	'team_schedule' => 'Team Schedule',
     'project' => 'Project',
 	'client' => 'Client',
 	'department' => 'Department',

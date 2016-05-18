@@ -2,10 +2,7 @@
 
 @section('content')
 <script src="js/department.js"></script>
-<?php
-#var_dump(session('organisation_id'));
-?>
-<div class="container">
+<div id="container" class="container-fluid">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">

@@ -34,7 +34,6 @@ function registerScheduleDragAndDrop() {
 		grid: [100, 0],
 		distance: 5,
 		stop: function (event, ui) {
-			//alert($(ui.element).data("ui-resizable").axis);
 			this_num_days = Math.ceil($(ui.element).width() / default_schedule_width);
 			$(ui.element).attr('data-sch-num-days', this_num_days);
 			drawSchedule();
@@ -88,6 +87,9 @@ function resizeWindow() {
 }
 
 function initialSchedule() {
+	var timer = setTimeout(function () {
+		showSpinner('main_div');
+	}, 500);
 	var from_date = new Date('2016-04-01');
 	var date_list = [from_date];
 	for (i = 1; i < 30; i++) {
@@ -100,6 +102,8 @@ function initialSchedule() {
 		data: {},
 		success: function (data) {
 			loadSchedule(date_list, data);
+			clearTimeout(timer);
+			hideSpinner();
 		}
 	})
 }
