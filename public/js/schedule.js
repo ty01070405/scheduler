@@ -1,12 +1,19 @@
 $(document).ready(function () {
 	resizeWindow();
+	
 	$('#right_bottom').scroll(function () {
 		$('#right_top').scrollLeft($('#right_bottom').scrollLeft());
 		$('#left_bottom').scrollTop($('#right_bottom').scrollTop());
 	});
+	
 	$(window).resize(function () {
 		resizeWindow();
-	})
+	});
+	
+	$('#task_id').autocomplete({
+		source: "api/taskList",
+	});
+	
 	initialSchedule();
 
 });

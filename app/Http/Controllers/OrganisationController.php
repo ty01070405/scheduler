@@ -16,16 +16,6 @@ use Illuminate\Support\Facades\Auth;
 class OrganisationController extends Controller
 {
 	
-	/**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        
-    }
-	
 	public function allDepartments(){
 		$departments = new DepartmentRepository();
 		$all_departments = $departments->forOrganisation(Organisation::find(Auth::user()->organisation_id));

@@ -12,6 +12,9 @@
 						<button id="department_add_button" class="btn btn-sm btn-primary" >{{ trans('menu.add') }}</button>
 					</div>
 				</div>
+				<?php
+					echo('aaa'.session('organisation_id'));
+				?>
 				@if(count($departments)>0)
 				<table class="table table-striped">
 					<thead>

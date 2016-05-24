@@ -12,15 +12,6 @@ use Illuminate\Support\Facades\Auth;
 
 class ScheduleController extends Controller {
 
-	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
-	public function __construct() {
-		
-	}
-
 	public function getScheduleList() {
 		$schedule_repository = new ScheduleRepository();
 		return response()->json($schedule_repository->getScheduleList());

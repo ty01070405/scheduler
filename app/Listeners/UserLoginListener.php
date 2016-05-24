@@ -2,11 +2,11 @@
 
 namespace App\Listeners;
 
-use App\Events\SomeEvent;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Auth\Events\Login;
 
-class EventListener
+class UserLoginListener
 {
     /**
      * Create the event listener.
@@ -24,8 +24,8 @@ class EventListener
      * @param  SomeEvent  $event
      * @return void
      */
-    public function handle(SomeEvent $event)
+    public function handle(Login $event)
     {
-        //
+        session(['organisation_id' => $event->user->id]);
     }
 }
