@@ -1,19 +1,91 @@
 $(document).ready(function () {
 	resizeWindow();
-	
+
 	$('#right_bottom').scroll(function () {
 		$('#right_top').scrollLeft($('#right_bottom').scrollLeft());
 		$('#left_bottom').scrollTop($('#right_bottom').scrollTop());
 	});
-	
+
 	$(window).resize(function () {
 		resizeWindow();
 	});
-	
-	$('#task_id').autocomplete({
+
+	$('#task_name').autocomplete({
 		source: "api/taskList",
-	});
+		appendTo: "#schedule_form",
+		focus: function (event, ui) {
+			$("#task_name").val(ui.item.name);
+			$("#task_id").val(ui.item.id);
+			return false;
+		},
+		select: function (event, ui) {
+			$("#task_name").val(ui.item.name);
+			$("#task_id").val(ui.item.id);
+			return false;
+		}
+	}).autocomplete( "instance" )._renderItem = function( ul, item ) {
+      return $( "<li>" )
+        .append( "<a>" + item.name + "<br><span style='color:grey'>" + item.project_name + ' , ' + item.client_name + "</span></a>" )
+        .appendTo( ul );
+    };
 	
+	$('#project_name').autocomplete({
+		source: "api/projectList",
+		appendTo: "#schedule_form",
+		focus: function (event, ui) {
+			$("#project_name").val(ui.item.name);
+			$("#project_id").val(ui.item.id);
+			return false;
+		},
+		select: function (event, ui) {
+			$("#project_name").val(ui.item.name);
+			$("#project_id").val(ui.item.id);
+			return false;
+		}
+	}).autocomplete( "instance" )._renderItem = function( ul, item ) {
+      return $( "<li>" )
+        .append( "<a>" + item.name + "<br><span style='color:grey'>" + item.client_name + "</span></a>" )
+        .appendTo( ul );
+    };
+	
+	$('#client_name').autocomplete({
+		source: "api/clientList",
+		appendTo: "#schedule_form",
+		focus: function (event, ui) {
+			$("#client_name").val(ui.item.name);
+			$("#client_id").val(ui.item.id);
+			return false;
+		},
+		select: function (event, ui) {
+			$("#client_name").val(ui.item.name);
+			$("#client_id").val(ui.item.id);
+			return false;
+		}
+	}).autocomplete( "instance" )._renderItem = function( ul, item ) {
+      return $( "<li>" )
+        .append( "<a>" + item.name + "</a>" )
+        .appendTo( ul );
+    };
+	
+	$('#user_name').autocomplete({
+		source: "api/userList",
+		appendTo: "#schedule_form",
+		focus: function (event, ui) {
+			$("#user_name").val(ui.item.name);
+			$("#user_id").val(ui.item.id);
+			return false;
+		},
+		select: function (event, ui) {
+			$("#user_name").val(ui.item.name);
+			$("#user_id").val(ui.item.id);
+			return false;
+		}
+	}).autocomplete( "instance" )._renderItem = function( ul, item ) {
+      return $( "<li>" )
+        .append( "<a>" + item.name + "<br><span style='color:grey'>" + item.job_title + ' , ' + item.department_name + "</a>" )
+        .appendTo( ul );
+    };
+
 	initialSchedule();
 
 });

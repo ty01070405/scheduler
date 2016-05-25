@@ -65,5 +65,8 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/api/schedule', ['middleware' => 'auth', 'uses' => 'ScheduleController@getSchedule']);
 	Route::post('/api/schedule', ['middleware' => 'auth', 'uses' => 'ScheduleController@processEditForm']);
 	
-	Route::get('/api/taskList', ['middleware' => 'auth', 'uses' => 'ScheduleController@getScheduleList']);
+	Route::get('/api/taskList', ['middleware' => 'auth', 'uses' => 'TaskController@apiSearchTask']);
+	Route::get('/api/projectList', ['middleware' => 'auth', 'uses' => 'ProjectController@apiSearchProject']);
+	Route::get('/api/clientList', ['middleware' => 'auth', 'uses' => 'ClientController@apiSearchClient']);
+	Route::get('/api/userList', ['middleware' => 'auth', 'uses' => 'UserController@apiSearchUser']);
 });

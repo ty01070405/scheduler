@@ -36,34 +36,38 @@
 						<table class='table table-borderless' width="100%">
 							<tr>
 								<td width="100px;">
-									<label for="task_id">{{trans('menu.task')}}</label>
+									<label for="task_name">{{trans('menu.task')}}</label>
 								</td>
 								<td>
-									<input type="text" class="form-control" id="task_id" />
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<label for="project_id">{{trans('menu.project')}}</label>
-								</td>
-								<td>
-									<input type="text" class="form-control" id="project_id" />
+									<input type="text" class="form-control" id="task_name" />
+									<input type="hidden" id="task_id" />
 								</td>
 							</tr>
 							<tr>
 								<td>
-									<label for="client_id">{{trans('menu.client')}}</label>
+									<label for="project_name">{{trans('menu.project')}}</label>
 								</td>
 								<td>
-									<input type="text" class="form-control" id="client_id" />
+									<input type="text" class="form-control" id="project_name" />
+									<input type="hidden" id="project_id" />
 								</td>
 							</tr>
 							<tr>
 								<td>
-									<label for="user_id">{{trans('menu.user')}}</label>
+									<label for="client_name">{{trans('menu.client')}}</label>
 								</td>
 								<td>
-									<input type="text" class="form-control" id="user_id" />
+									<input type="text" class="form-control" id="client_name" />
+									<input type="hidden" id="client_id" />
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label for="user_name">{{trans('menu.user')}}</label>
+								</td>
+								<td>
+									<input type="text" class="form-control" id="user_name" />
+									<input type="hidden" id="user_id" />
 								</td>
 							</tr>
 						</table>
